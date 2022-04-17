@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F_ckCreditSlavery.WebApi", "F_ckCreditSlavery.WebApi\F_ckCreditSlavery.WebApi.csproj", "{2AF2CF96-6A9B-490E-9DCD-22AFA29580FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F_ckCreditSlavery.Repositories", "F_ckCreditSlavery.Repositories\F_ckCreditSlavery.Repositories.csproj", "{36B83BF2-93AA-4191-B07B-51B924C851E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F_ckCreditSlavery.LoggerService", "F_ckCreditSlavery.LoggerService\F_ckCreditSlavery.LoggerService.csproj", "{8865AC2F-6B1B-4DA4-BF46-9F2CF807E823}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F_ckCreditSlavery.Entities", "F_ckCreditSlavery.Entities\F_ckCreditSlavery.Entities.csproj", "{568069F6-3809-422D-9D22-99F2E83AA44E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F_ckCreditSlavery.Contracts", "F_ckCreditSlavery.Contracts\F_ckCreditSlavery.Contracts.csproj", "{394E4B4C-2B7D-481A-A178-C589B95B46B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AF2CF96-6A9B-490E-9DCD-22AFA29580FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF2CF96-6A9B-490E-9DCD-22AFA29580FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF2CF96-6A9B-490E-9DCD-22AFA29580FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF2CF96-6A9B-490E-9DCD-22AFA29580FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B83BF2-93AA-4191-B07B-51B924C851E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B83BF2-93AA-4191-B07B-51B924C851E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B83BF2-93AA-4191-B07B-51B924C851E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B83BF2-93AA-4191-B07B-51B924C851E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8865AC2F-6B1B-4DA4-BF46-9F2CF807E823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8865AC2F-6B1B-4DA4-BF46-9F2CF807E823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8865AC2F-6B1B-4DA4-BF46-9F2CF807E823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8865AC2F-6B1B-4DA4-BF46-9F2CF807E823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568069F6-3809-422D-9D22-99F2E83AA44E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568069F6-3809-422D-9D22-99F2E83AA44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568069F6-3809-422D-9D22-99F2E83AA44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568069F6-3809-422D-9D22-99F2E83AA44E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{394E4B4C-2B7D-481A-A178-C589B95B46B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394E4B4C-2B7D-481A-A178-C589B95B46B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394E4B4C-2B7D-481A-A178-C589B95B46B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394E4B4C-2B7D-481A-A178-C589B95B46B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

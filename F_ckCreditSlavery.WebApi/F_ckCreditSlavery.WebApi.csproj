@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-F_ckCreditSlavery.WebApi-5EEC1BB8-5AAF-4BCD-A6F0-667A36755AE3</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AspNetCoreRateLimit" Version="4.0.2" />
+        <PackageReference Include="AutoMapper" Version="11.0.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="Marvin.Cache.Headers" Version="6.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.4" />
+        <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
+        <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\F_ckCreditSlavery.Contracts\F_ckCreditSlavery.Contracts.csproj" />
+      <ProjectReference Include="..\F_ckCreditSlavery.Entities\F_ckCreditSlavery.Entities.csproj" />
+      <ProjectReference Include="..\F_ckCreditSlavery.LoggerService\F_ckCreditSlavery.LoggerService.csproj" />
+      <ProjectReference Include="..\F_ckCreditSlavery.Repositories\F_ckCreditSlavery.Repositories.csproj" />
+    </ItemGroup>
+
+</Project>

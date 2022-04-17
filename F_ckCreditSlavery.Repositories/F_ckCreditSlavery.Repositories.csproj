@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\F_ckCreditSlavery.Contracts\F_ckCreditSlavery.Contracts.csproj" />
+      <ProjectReference Include="..\F_ckCreditSlavery.Entities\F_ckCreditSlavery.Entities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
+    </ItemGroup>
+
+</Project>
