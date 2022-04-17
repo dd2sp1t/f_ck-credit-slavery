@@ -15,5 +15,7 @@ public class MappingProfile : Profile
         CreateMap<CreditAccountChange, CreditAccountChangeGetDto>();
         CreateMap<CreditAccountChangePostDto, CreditAccountChange>();
         CreateMap<CreditAccountChangeUpdateDto, CreditAccountChange>();
+
+        CreateMap<UserRegisterDto, User>();
     }
 }

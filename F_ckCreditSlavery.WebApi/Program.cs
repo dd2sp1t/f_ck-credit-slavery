@@ -1,6 +1,7 @@
 using AspNetCoreRateLimit;
 using F_ckCreditSlavery.Contracts;
 using F_ckCreditSlavery.Entities.DataTransferObjects;
+using F_ckCreditSlavery.LoggerService;
 using F_ckCreditSlavery.Repositories.DataShaping;
 using F_ckCreditSlavery.WebApi.Extensions;
 using F_ckCreditSlavery.WebApi.Filters.Action;
@@ -36,7 +37,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo {Title = "F_ckCreditSlavery.WebApi", Version = "v1"});
     c.OperationFilter<SwaggerSkipPropertyFilter>();
-});;
+});
 
 #region Service.Extensions
 builder.Services.ConfigureLoggerService();
@@ -53,6 +54,10 @@ builder.Services.AddHttpContextAccessor();
 #endregion
 
 builder.Services.AddCustomMediaTypes();
+
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+
 #endregion
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -73,6 +78,8 @@ builder.Services.AddScoped <IDataShaper<CreditAccountGetDto>, DataShaper<CreditA
 builder.Services.AddScoped <IDataShaper<CreditAccountChangeGetDto>, DataShaper<CreditAccountChangeGetDto>>();
 builder.Services.AddScoped<CreditAccountChangeLinks>();
 
+builder.Services.AddSingleton<ILoggerManager, LoggerManager>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -82,7 +89,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.ConfigureExceptionHandler(logger);
+using (var scope = app.Services.CreateScope())
+{
+    var logger = scope.ServiceProvider.GetRequiredService<ILoggerManager>();
+    app.ConfigureExceptionHandler(logger);
+}
 
 app.UseCors(x => x
     .AllowAnyOrigin()
