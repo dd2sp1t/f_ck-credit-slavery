@@ -1,4 +1,5 @@
-﻿using F_ckCreditSlavery.Entities;
+﻿using System.Text;
+using F_ckCreditSlavery.Entities;
 using F_ckCreditSlavery.Entities.Models;
 using F_ckCreditSlavery.Contracts;
 using F_ckCreditSlavery.Contracts.Repositories;
@@ -9,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 // using Marvin.Cache.Headers;
 
@@ -91,5 +94,33 @@ public static class ServiceExtensions
         });
         builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);
         builder.AddEntityFrameworkStores<RepositoryContext>().AddDefaultTokenProviders();
+    }
+    
+    public static void ConfigureJwt(this IServiceCollection services, IConfiguration
+        configuration)
+    {
+        var jwtSettings = configuration.GetSection("JwtSettings");
+       
+        var secretKey = Environment.GetEnvironmentVariable("SECRET");
+       
+        services
+            .AddAuthentication(options => 
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
+                    ValidAudience = jwtSettings.GetSection("validAudience").Value,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey!))
+                };
+            });
     }
 }

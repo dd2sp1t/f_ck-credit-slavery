@@ -7,10 +7,7 @@ using F_ckCreditSlavery.WebApi.Extensions;
 using F_ckCreditSlavery.WebApi.Filters.Action;
 using F_ckCreditSlavery.WebApi.Filters.Schema;
 using F_ckCreditSlavery.WebApi.Utility;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
 using NLog;
 
@@ -57,7 +54,7 @@ builder.Services.AddCustomMediaTypes();
 
 builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
-
+builder.Services.ConfigureJwt(builder.Configuration);
 #endregion
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -86,7 +83,9 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(
+        // s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "VT API v1")
+        );
 }
 
 using (var scope = app.Services.CreateScope())
@@ -104,8 +103,8 @@ app.UseIpRateLimiting();
 
 app.UseHttpsRedirection();
 
-// app.UseAuthentication();
-// app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
