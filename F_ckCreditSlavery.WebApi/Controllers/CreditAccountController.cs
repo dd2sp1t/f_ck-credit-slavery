@@ -6,6 +6,7 @@ using F_ckCreditSlavery.Entities.RequestFeatures;
 using F_ckCreditSlavery.WebApi.ModelBinders;
 using F_ckCreditSlavery.WebApi.Filters.Action;
 using F_ckCreditSlavery.Contracts.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -45,7 +46,7 @@ public class CreditAccountController : ControllerBase
     {
         if (!parameters.IsValidStartDataRange) return BadRequest("Max start date can't be less than min start date.");
         if (!parameters.IsValidEndDataRange) return BadRequest("Max end date can't be less than min end date.");
-            
+        
         var accounts = await _repository.CreditAccount.GetAsync(parameters, false);
             
         Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(accounts.MetaData));
@@ -93,7 +94,7 @@ public class CreditAccountController : ControllerBase
         return Ok(accountDto);
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     [ServiceFilter(typeof(ValidationFilterAttribute))]
     public async Task<IActionResult> CreateCreditAccount([FromBody] CreditAccountPostDto creditAccount)
     {
